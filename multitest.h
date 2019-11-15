@@ -10,6 +10,8 @@ typedef struct threadStruct{
         int size;
         int key;
         int* array;
+        int startIndex;
+        int endIndex;
 } threadStruct;
 
 //thread function headers

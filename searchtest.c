@@ -5,9 +5,9 @@ void printArray(int* array, int size);
 
 
 int main(int argc, char* argv[]){
-    int* array = giveMeARandomArray(5000);
-    printArray(array, 5000);
-    performSearch(array, 5000, 333); 
+    int* array = giveMeARandomArray(10000);
+    //printArray(array, 5000);
+    performSearch(array, 20000, 242); 
 }
 
 int* giveMeARandomArray(int size){
