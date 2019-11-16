@@ -19,7 +19,6 @@ void* threadSearch(void* args){
 
 int performSearch(int* array, int size, int key){
         int numberOfThreads = (int) ceil((double)size/(double)250);
-        printf("Number Of Threads: %d\n", numberOfThreads);
         pthread_t threadArray[numberOfThreads];
         int* foundIndex  = malloc(sizeof(int));
         *foundIndex = -1;
@@ -44,7 +43,6 @@ int performSearch(int* array, int size, int key){
         pthread_attr_init(&attrStruct);
         //start creation process
         int i = 0;
-        printf("Got to creation\n");
         for(i = 0;i<numberOfThreads;i++){
                 pthread_create(&threadArray[i], &attrStruct, threadSearch, (void*)argArray[i]);
         }
@@ -58,7 +56,7 @@ int performSearch(int* array, int size, int key){
                         break;
                 }
         }
-        return 0;
+        return *foundIndex;
 }
 
 

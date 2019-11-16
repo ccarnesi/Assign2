@@ -2,13 +2,38 @@
 
 int* giveMeARandomArray(int size);
 void printArray(int* array, int size);
+int* swapFoundWithRandom(int* array, int index, int size);
+void linearSearch();
 
+void testA();
 
 int main(int argc, char* argv[]){
-    int* array = giveMeARandomArray(10000);
-    //printArray(array, 5000);
-    performSearch(array, 20000, 242); 
+        testA();
 }
+
+void testA(){
+    int* array = giveMeARandomArray(50000);
+    
+    int i = 0;
+    for(i=0;i<100;i++){
+            int found = performSearch(array, 50000, 15200);
+            array = swapFoundWithRandom(array, found, 50000);
+    }
+
+}
+
+
+int* swapFoundWithRandom(int* array, int index, int size){
+    int k = rand() % size;
+    int temp = array[k];
+    array[k] = array[index];
+    array[index] = temp;
+    return array;
+}
+
+
+
+
 
 int* giveMeARandomArray(int size){
     int* array = malloc((sizeof(int)) * size);
