@@ -3,7 +3,6 @@
 int* giveMeARandomArray(int size);
 void printArray(int* array, int size);
 int* swapFoundWithRandom(int* array, int index, int size);
-void linearSearch();
 
 void testA();
 

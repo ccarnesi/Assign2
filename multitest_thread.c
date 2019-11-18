@@ -53,9 +53,15 @@ int performSearch(int* array, int size, int key){
                 pthread_join(threadArray[i], (void**)&foundIndex);
                 if(*foundIndex != -1){
                         printf("Found at index %d in thread number %d\n", *foundIndex, i);
+                        i++;
+                        while(i<numberOfThreads){
+                                pthread_join(threadArray[i], NULL);
+                                i++;    
+                        }
                         break;
                 }
         }
+        //free all the threads;
         return *foundIndex;
 }
 
