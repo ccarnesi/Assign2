@@ -12,19 +12,31 @@ void testA();
 void testB();
 void testC();
 void testD();
+void testE();
+void testF();
+void testG();
+void testH();
+void testI();
+void testJ();
 
 int main(int argc, char* argv[]){
         testA();
         testB();
         testC();
         testD();
+        testE();
+        testF(); 
+        testG(); 
+        testH();
+        testI();
+
 }
 
 void testA(){
     long timeArray[100];
     struct timeval start, end;
     int* array = giveMeARandomArray(100000);
-    printf("Running Test A which searches a 100,000 elelement array for the number 15,200\n");    
+    printf("Running Test A which searches a 100,000 element array for the number 15,200\n");    
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
@@ -41,7 +53,7 @@ void testB(){
     long timeArray[100];
     struct timeval start, end;
     int* array = giveMeARandomArray(50000);
-    printf("Running Test B which searches a 50,000 elelement array for the number 15,200\n");    
+    printf("Running Test B which searches a 50,000 element array for the number 15,200\n");    
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
@@ -58,7 +70,7 @@ void testC(){
     long timeArray[100];
     struct timeval start, end;
     int* array = giveMeARandomArray(10000);
-    printf("Running Test C which searches a 10,000 elelement array for the number 200\n");    
+    printf("Running Test C which searches a 10,000 element array for the number 200\n");    
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
@@ -75,7 +87,7 @@ void testD(){
     long timeArray[100];
     struct timeval start, end;
     int* array = giveMeARandomArray(1000);
-    printf("Running Test D which searches a 1,000 elelement array for the number 200\n");    
+    printf("Running Test D which searches a 1,000 element array for the number 200\n");    
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
@@ -88,6 +100,113 @@ void testD(){
     }
     getMetrics(timeArray, 100, "Test D");
 }
+
+void testE(){
+    long timeArray[100];
+    struct timeval start, end;
+    int* array = giveMeARandomArray(5000);
+    printf("Running Test E which searches a 5,000 element array for the number 200 in chunks of 250\n");    
+    int i = 0;
+    for(i=0;i<100;i++){
+            gettimeofday(&start, NULL);
+            int found = performSearch(array, 5000, 200, 250);
+            gettimeofday(&end, NULL);
+            long seconds = end.tv_sec - start.tv_sec;
+            timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
+            printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+            array = swapFoundWithRandom(array, found, 5000);
+    }
+    getMetrics(timeArray, 100, "Test E");
+}
+void testF(){
+    long timeArray[100];
+    struct timeval start, end;
+    int* array = giveMeARandomArray(5000);
+    printf("Running Test F which searches a 5,000 element array for the number 200 in chunks of 150\n");    
+    int i = 0;
+    for(i=0;i<100;i++){
+            gettimeofday(&start, NULL);
+            int found = performSearch(array, 5000, 200, 150);
+            gettimeofday(&end, NULL);
+            long seconds = end.tv_sec - start.tv_sec;
+            timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
+            printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+            array = swapFoundWithRandom(array, found, 5000);
+    }
+    getMetrics(timeArray, 100, "Test F");
+}
+void testG(){
+    long timeArray[100];
+    struct timeval start, end;
+    int* array = giveMeARandomArray(5000);
+    printf("Running Test G which searches a 5,000 element array for the number 200 in chunks of 50\n");    
+    int i = 0;
+    for(i=0;i<100;i++){
+            gettimeofday(&start, NULL);
+            int found = performSearch(array, 5000, 200, 50);
+            gettimeofday(&end, NULL);
+            long seconds = end.tv_sec - start.tv_sec;
+            timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
+            printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+            array = swapFoundWithRandom(array, found, 5000);
+    }
+    getMetrics(timeArray, 100, "Test G");
+}
+
+void testH(){
+    long timeArray[100];
+    struct timeval start, end;
+    int* array = giveMeARandomArray(5000);
+    printf("Running Test H which searches a 5,000 element array for the number 200 in chunks of 10\n");    
+    int i = 0;
+    for(i=0;i<100;i++){
+            gettimeofday(&start, NULL);
+            int found = performSearch(array, 5000, 200, 10);
+            gettimeofday(&end, NULL);
+            long seconds = end.tv_sec - start.tv_sec;
+            timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
+            printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+            array = swapFoundWithRandom(array, found, 5000);
+    }
+    getMetrics(timeArray, 100, "Test H");
+}
+
+void testI(){
+    long timeArray[100];
+    struct timeval start, end;
+    int* array = giveMeARandomArray(5000);
+    printf("Running Test I which searches a 5,000 element array for the number 200 in chunks of 5\n");    
+    int i = 0;
+    for(i=0;i<100;i++){
+            gettimeofday(&start, NULL);
+            int found = performSearch(array, 5000, 200, 5);
+            gettimeofday(&end, NULL);
+            long seconds = end.tv_sec - start.tv_sec;
+            timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
+            printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+            array = swapFoundWithRandom(array, found, 5000);
+    }
+    getMetrics(timeArray, 100, "Test I");
+}
+
+void testJ(){
+    long timeArray[100];
+    struct timeval start, end;
+    int* array = giveMeARandomArray(250);
+    printf("Running Test J which searches a 250 element array for the number 200\n");    
+    int i = 0;
+    for(i=0;i<100;i++){
+            gettimeofday(&start, NULL);
+            int found = performSearch(array, 250, 200, 250);
+            gettimeofday(&end, NULL);
+            long seconds = end.tv_sec - start.tv_sec;
+            timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
+            printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+            array = swapFoundWithRandom(array, found, 250);
+    }
+    getMetrics(timeArray, 100, "Test J");
+}
+
 int* swapFoundWithRandom(int* array, int index, int size){
     int k = rand() % size;
     int temp = array[k];
