@@ -16,7 +16,7 @@ void testA(){
     
     int i = 0;
     for(i=0;i<100;i++){
-            int found = performSearch(array, 50000, 15200);
+            int found = performSearch(array, 50000, 15200,250);
             array = swapFoundWithRandom(array, found, 50000);
     }
 
