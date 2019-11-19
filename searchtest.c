@@ -44,16 +44,12 @@ void testB(){
     printf("Running Test B which searches a 50,000 elelement array for the number 15,200\n");    
     int i = 0;
     for(i=0;i<100;i++){
-<<<<<<< HEAD
-            int found = performSearch(array, 50000, 15200,250);
-=======
             gettimeofday(&start, NULL);
             int found = performSearch(array, 50000, 15200);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
             printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
->>>>>>> 125376b29155861396d23f1c8752057f14a0cdfc
             array = swapFoundWithRandom(array, found, 50000);
     }
     getMetrics(timeArray, 100, "Test B");
