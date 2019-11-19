@@ -205,6 +205,26 @@ void testJ(){
             array = swapFoundWithRandom(array, found, 250);
     }
     getMetrics(timeArray, 100, "Test J");
+
+void testMeep(){
+	long timeArray[100];
+	struct timeval start, end;
+	int* array = giveMeARandomArray(1000);
+	int arraysize = 1000;
+	int i,j = 0;
+	for(i=0;i<15;i++){
+		for(j=0;j<100;j++){
+			gettimeofday(&start,NULL);
+			int found = performSearch(array,arraysize,200,250);
+			gettimeofday(&end, NULL);
+			long seconds = end.tv_sec - start.tv_sec;
+			timeArray[i] = ((seconds*1000000) + end.tv_usec)-(start.tv_usec);
+			array = swapFoundwithRandom(array,found,arraysize);
+			float average = getAvgLong(array,arraysize);
+			print("%d,%f;",arraysize,average);
+		}
+		arraysize += 5000;
+	}
 }
 
 int* swapFoundWithRandom(int* array, int index, int size){
@@ -214,9 +234,6 @@ int* swapFoundWithRandom(int* array, int index, int size){
     array[index] = temp;
     return array;
 }
-
-
-
 
 
 int* giveMeARandomArray(int size){
