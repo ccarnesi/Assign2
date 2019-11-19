@@ -2,11 +2,15 @@
 int performSearch(int * array , int size, int key, int blocksize){
  /*If we are able to get the number of forks that we have to do then we can also somehow pass the other two numbers but not sure how (basically create method that will allow us*/
 	int blocks =size/ blocksize;
-	int times = log2(blocks);
+	int remainder = 0;
+	remainder = size % blocksize;
+	if(remainder> 0){
+		blocks++;
+	}
 	int i,init,start= 0;
 	int fin = blocksize;
 	int stat;
-	for(i=0;i <times;i++){
+	for(i=0;i <blocks;i++){
 		/*this is the loop that will create the necessary amount of children, just have to figure out a way to be able to iterate through the array in the correct positions*/
 		if(fork()==0){
 			int counter = start;
