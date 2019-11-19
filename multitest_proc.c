@@ -1,5 +1,5 @@
 #include "multitest.h"
-int procSearch(int * array , int size, int key, int blocksize){
+int performSearch(int * array , int size, int key, int blocksize){
  /*If we are able to get the number of forks that we have to do then we can also somehow pass the other two numbers but not sure how (basically create method that will allow us*/
 	int blocks =size/ blocksize;
 	int times = log2(blocks);
@@ -34,13 +34,13 @@ int procSearch(int * array , int size, int key, int blocksize){
 		}
 		/* here 255 means child found no key in their array search*/
 		if(WIFEXITED(stat)){
-			if(WEXITSTATS(stat)==255){
+			if(WEXITSTATUS(stat)==255){
 				/*not found in that child process continue*/
 				continue;
 			}
 			else{
 				/*found somewhere*/
-				return (i*blocksize)+WEXITSTATS(stat);
+				return (i*blocksize)+WEXITSTATUS(stat);
 
 			}
 		}

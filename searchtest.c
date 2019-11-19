@@ -28,7 +28,7 @@ void testA(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = performSearch(array, 100000, 15200);
+            int found = performSearch(array, 100000, 15200, 250);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
@@ -45,7 +45,7 @@ void testB(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = performSearch(array, 50000, 15200);
+            int found = performSearch(array, 50000, 15200, 250);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
@@ -62,7 +62,7 @@ void testC(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = performSearch(array, 10000, 200);
+            int found = performSearch(array, 10000, 200, 250);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
@@ -79,7 +79,7 @@ void testD(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = performSearch(array, 1000, 200);
+            int found = performSearch(array, 1000, 200, 250);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
