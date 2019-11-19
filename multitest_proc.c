@@ -1,4 +1,4 @@
-#include <math.h>
+#include "multitest.h"
 int procSearch(int * array , int size, int key, int blocksize){
  /*If we are able to get the number of forks that we have to do then we can also somehow pass the other two numbers but not sure how (basically create method that will allow us*/
 	int blocks =size/ blocksize;
@@ -9,16 +9,10 @@ int procSearch(int * array , int size, int key, int blocksize){
 	for(i=0;i < blocks;i++){
 		/*this is the loop that will create the necessary amount of children, just have to figure out a way to be able to iterate through the array in the correct positions*/
 		if(fork()==0){
-			/*at child and should change what area to search*/
-			start += blocksize;
-			fin += blocksize;
-			if(i==blocks-1){
-				finish =size;
-			}
-			counter = start;
-			count = 0;
+			int counter = start;
+			int count = 0;
 			/*this portion searches for the key*/
-			for(counter; counter<finish;start++){
+			for(counter; counter<fin;counter++){
 				if(array[counter]==key){
 					exit(count);
 
@@ -30,7 +24,13 @@ int procSearch(int * array , int size, int key, int blocksize){
 		}
 		else{
 			/*here the parent is waiting for the child and recieved the number in which they found the key*/
-			wait(&stat)
+			start += blocksize;
+			fin += blocksize;
+			if(i==blocks-1){
+				fin = size;
+			}
+			wait(&stat);
+
 		}
 		/* here 255 means child found no key in their array search*/
 		if(WIFEXITED(stat)){
@@ -40,11 +40,11 @@ int procSearch(int * array , int size, int key, int blocksize){
 			}
 			else{
 				/*found somewhere*/
-				return (i*blocksize)+WEXITSTATS(stat)
+				return (i*blocksize)+WEXITSTATS(stat);
 
 			}
 		}
 
 	}
-	return -1
+	return -1;
 }	

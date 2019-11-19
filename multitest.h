@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <pthread.h>
-
+#include <sys/wait.h>
 typedef struct threadStruct{
         int size;
         int key;
@@ -15,6 +15,6 @@ typedef struct threadStruct{
 } threadStruct;
 
 //thread function headers
-int performSearch(int * array, int size, int key);
+int performSearch(int * array, int size, int key, int blocksize);
 
 #endif
