@@ -12,10 +12,12 @@ void* threadSearch(void* args){
             if(array[i]==threadArgs->key){
                     //found
                     *retValue = i;
-                    return (void*) retValue;
+                    //return (void*) retValue;
+                    pthread_exit(retValue);
             }
     }
-    return (void*) retValue;
+     pthread_exit(retValue);
+     //return (void*)retValue;
 }
 
 
@@ -35,9 +37,9 @@ int performSearch(int* array, int size, int key, int blockSize){
             threadArgs->key = key;
             threadArgs->startIndex = blockSize*k;
             if(threadArgs->startIndex + blockSize-1< size-1){
-                    threadArgs->endIndex = threadArgs->startIndex + 249;
+                    threadArgs->endIndex = threadArgs->startIndex + blockSize;
             }else{
-                    threadArgs->endIndex = size-1;
+                    threadArgs->endIndex = size;
             }
             argArray[k] = threadArgs;
         }
