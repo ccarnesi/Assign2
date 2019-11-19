@@ -6,7 +6,7 @@ int procSearch(int * array , int size, int key, int blocksize){
 	int i,init,start= 0;
 	int fin = blocksize;
 	int stat;
-	for(i=0;i < blocks;i++){
+	for(i=0;i <times;i++){
 		/*this is the loop that will create the necessary amount of children, just have to figure out a way to be able to iterate through the array in the correct positions*/
 		if(fork()==0){
 			int counter = start;
@@ -34,7 +34,7 @@ int procSearch(int * array , int size, int key, int blocksize){
 		}
 		/* here 255 means child found no key in their array search*/
 		if(WIFEXITED(stat)){
-			if(WEXITSTATS(stat)==255){
+			if(WEXITSTATSUS(stat)==255){
 				/*not found in that child process continue*/
 				continue;
 			}
