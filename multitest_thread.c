@@ -1,5 +1,6 @@
 #include "multitest.h"
 
+void freeThreadArray(threadStruct* argArray[], int size);
 
 void* threadSearch(void* args){
     threadStruct* threadArgs = args;
@@ -16,6 +17,7 @@ void* threadSearch(void* args){
     }
     return (void*) retValue;
 }
+
 
 int performSearch(int* array, int size, int key, int blockSize){
         printf("Searching using multi-threading\n");
@@ -53,7 +55,6 @@ int performSearch(int* array, int size, int key, int blockSize){
         for(i = 0;i<numberOfThreads;i++){
                 pthread_join(threadArray[i], (void**)&foundIndex);
                 if(*foundIndex != -1){
-//                        printf("Found at index %d in thread number %d\n", *foundIndex, i);
                         i++;
                         while(i<numberOfThreads){
                                 pthread_join(threadArray[i], NULL);
@@ -63,7 +64,14 @@ int performSearch(int* array, int size, int key, int blockSize){
                 }
         }
         //free all the threads;
+        freeThreadArray(argArray, numberOfThreads);
         return *foundIndex;
 }
 
-
+void freeThreadArray(threadStruct* argArray[], int size){
+        int i =0;
+        for(i=0;i<size;i++){
+                free(argArray[i]);
+        }
+        return;
+}
