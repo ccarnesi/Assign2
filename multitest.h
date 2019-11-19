@@ -15,6 +15,6 @@ typedef struct threadStruct{
 } threadStruct;
 
 //thread function headers
-int performSearch(int * array, int size, int key);
+int performSearch(int * array, int size, int key, int blockSize);
 
 #endif

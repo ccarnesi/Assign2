@@ -17,9 +17,9 @@ void* threadSearch(void* args){
     return (void*) retValue;
 }
 
-int performSearch(int* array, int size, int key){
+int performSearch(int* array, int size, int key, int blockSize){
         printf("Searching using multi-threading\n");
-        int numberOfThreads = (int) ceil((double)size/(double)250);
+        int numberOfThreads = (int) ceil((double)size/(double)blockSize);
         pthread_t threadArray[numberOfThreads];
         int* foundIndex  = malloc(sizeof(int));
         *foundIndex = -1;
@@ -31,8 +31,8 @@ int performSearch(int* array, int size, int key){
             threadArgs->array = array;
             threadArgs->size = size;
             threadArgs->key = key;
-            threadArgs->startIndex = 250*k;
-            if(threadArgs->startIndex + 249< size-1){
+            threadArgs->startIndex = blockSize*k;
+            if(threadArgs->startIndex + blockSize-1< size-1){
                     threadArgs->endIndex = threadArgs->startIndex + 249;
             }else{
                     threadArgs->endIndex = size-1;

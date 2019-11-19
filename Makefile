@@ -9,7 +9,9 @@ multitest_thread.o:
 multitest_proc.o:
 	gcc -c multitest_proc.c
 
-clean:
+cleanThread:
 	rm multitest_thread.o
+	rm searchtest
+cleanProc:
 	rm multitest_proc.o
 	rm searchtest
