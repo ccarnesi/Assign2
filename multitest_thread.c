@@ -22,7 +22,7 @@ void* threadSearch(void* args){
 
 
 int performSearch(int* array, int size, int key, int blockSize){
-        printf("Searching using multi-threading\n");
+//        printf("Searching using multi-threading\n");
         int numberOfThreads = (int) ceil((double)size/(double)blockSize);
         pthread_t threadArray[numberOfThreads];
         int* foundIndex  = malloc(sizeof(int));

@@ -16,5 +16,23 @@ typedef struct threadStruct{
 
 //thread function headers
 int performSearch(int * array, int size, int key, int blockSize);
+int* giveMeARandomArray(int size);
+void printArray(int* array, int size);
+int* swapFoundWithRandom(int* array, int index, int size);
+float getAvgFloat(float array[], int size);
+float getAvgLong(long array[], int size);
+void getMetrics(long array[], int size, char* testName);
+
+void testA();
+void testB();
+void testC();
+void testD();
+void testE();
+void testF();
+void testG();
+void testH();
+void testI();
+void testJ();
+void testMeep();
 
 #endif
