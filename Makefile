@@ -1,3 +1,6 @@
+all:
+	$(error Please specify thread or proc)
+
 thread: searchtest.c multitest_thread.o
 	gcc searchtest.c multitest_thread.o -lm -lpthread -o searchtest
 proc: searchtest.c multitest_proc.o
@@ -9,9 +12,6 @@ multitest_thread.o:
 multitest_proc.o:
 	gcc -c multitest_proc.c
 
-cleanThread:
-	rm multitest_thread.o
-	rm searchtest
-cleanProc:
-	rm multitest_proc.o
+clean:
+	rm multitest_*.o
 	rm searchtest

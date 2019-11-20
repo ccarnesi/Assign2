@@ -2,11 +2,7 @@
 #include <sys/time.h>
 
 int main(int argc, char* argv[]){
-    testJ();
-    testD();
-    testE();
-    testC();
-    
+        testMeep();
 }
 
 void testA(){
@@ -21,7 +17,7 @@ void testA(){
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-            printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+            printf("Ran iteration %d\n", (i+1));
             array = swapFoundWithRandom(array, found, 100000);
     }
     getMetrics(timeArray, 100, "Test A");
@@ -38,7 +34,7 @@ void testB(){
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-            printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+            printf("Ran iteration %d\n", (i+1));
             array = swapFoundWithRandom(array, found, 50000);
     }
     getMetrics(timeArray, 100, "Test B");
@@ -55,11 +51,11 @@ void testC(){
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-      //      printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+      //      printf("Ran iteration %d\n", (i+1));
             array = swapFoundWithRandom(array, found, 10000);
     }
     float avg = getAvgLong(timeArray, 100);
-    printf("%d,%f",10000, avg);
+    printf("%d,%f;",10000, avg);
 
     //getMetrics(timeArray, 100, "Test C");
 }
@@ -75,11 +71,11 @@ void testD(){
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-      //      printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+      //      printf("Ran iteration %d\n", (i+1));
             array = swapFoundWithRandom(array, found, 1000);
     }
     float avg = getAvgLong(timeArray, 100);
-    printf("%d,%f",1000, avg);
+    printf("%d,%f;",1000, avg);
     //getMetrics(timeArray, 100, "Test D");
 }
 
@@ -95,11 +91,11 @@ void testE(){
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-      //      printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+      //      printf("Ran iteration %d\n", (i+1));
             array = swapFoundWithRandom(array, found, 5000);
     }
     float avg = getAvgLong(timeArray, 100);
-    printf("%d,%f",5000, avg);
+    printf("%d,%f;",250, avg);
     //getMetrics(timeArray, 100, "Test E");
 }
 void testF(){
@@ -114,11 +110,11 @@ void testF(){
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-      //      printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+      //      printf("Ran iteration %d\n", (i+1));
             array = swapFoundWithRandom(array, found, 5000);
     }
     float avg = getAvgLong(timeArray, 100);
-    printf("%d,%f",150, avg);
+    printf("%d,%f;",150, avg);
     //getMetrics(timeArray, 100, "Test F");
 }
 void testG(){
@@ -133,11 +129,11 @@ void testG(){
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-      //      printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+      //      printf("Ran iteration %d\n", (i+1));
             array = swapFoundWithRandom(array, found, 5000);
     }
     float avg = getAvgLong(timeArray, 100);
-    printf("%d,%f",50, avg);
+    printf("%d,%f;",50, avg);
 
     //getMetrics(timeArray, 100, "Test G");
 }
@@ -154,11 +150,11 @@ void testH(){
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-      //      printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+      //      printf("Ran iteration %d\n", (i+1));
             array = swapFoundWithRandom(array, found, 5000);
     }
     float avg = getAvgLong(timeArray, 100);
-    printf("%d,%f",10, avg);
+    printf("%d,%f;",10, avg);
 
     //getMetrics(timeArray, 100, "Test H");
 }
@@ -175,11 +171,11 @@ void testI(){
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-      //      printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+      //      printf("Ran iteration %d \n", (i+1));
             array = swapFoundWithRandom(array, found, 5000);
     }
     float avg = getAvgLong(timeArray, 100);
-    printf("%d,%f",5, avg);
+    printf("%d,%f;",5, avg);
     //getMetrics(timeArray, 100, "Test I");
 }
 
@@ -191,11 +187,11 @@ void testJ(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = performSearch(array, 250, 200, 250);
+            int found = doStuff(array, 250, 200, 250);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-      //      printf("Ran iteration %d which took %d ms\n", (i+1), timeArray[i]);
+      //      printf("Ran iteration %d\n", (i+1));
             array = swapFoundWithRandom(array, found, 250);
     }
     float avg = getAvgLong(timeArray, 100);
@@ -207,21 +203,20 @@ void testJ(){
 void testMeep(){
 	long timeArray[100];
 	struct timeval start, end;
-	int arraysize = 1000;
+    int arraySizes[] = {1000, 5000, 10000, 15000, 20000};
     int* array; 
 	int i,j = 0;
-	for(i=0;i<15;i++){
-        array = giveMeARandomArray(arraysize);
+	for(i=0;i<5;i++){
+        array = giveMeARandomArray(arraySizes[i]);
 		for(j=0;j<100;j++){
 			gettimeofday(&start,NULL);
-			int found = performSearch(array,arraysize,200,250);
+			int found = performSearch(array,arraySizes[i],200,250);
 			gettimeofday(&end, NULL);
 			long seconds = end.tv_sec - start.tv_sec;
 			timeArray[j] = ((seconds*1000000) + end.tv_usec)-(start.tv_usec);
 		}
         float average = getAvgLong(timeArray,100);
-		printf("%d,%f;",arraysize,average);
-		arraysize += 5000;
+		printf("%d,%f;",arraySizes[i],average);
 	}
 }
 
