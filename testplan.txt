@@ -1,4 +1,4 @@
-To test the size vs speed relation for both processes and threads, we have implemented 4 tests (A,B,C,D) that run searches on arrays of sizes 100000, 50000, 10000, 1000 respectively.This is done to gauge how the searches react to different size arrays. The block size that each thread or process is responsible for is 250.
+To test the size vs speed relation for both processes and threads, we have implemented a test called testMeep that run searches on arrays of sizes 1000, 5000, 10000, 15000, and 20000 respectively.This is done to gauge how the searches react to different size arrays. The block size that each thread or process is responsible for is 250.
 
 To test how long of an array it would take for threads to compete with a process running a search on a single 250 chunk we have impemented 4 tests (J,D,E,C). Test J searches a 250 element array with a blockssize of 250. This would require one process which will be what we compare to threads running on larger arrays. We test multi-threading with the remaining tests which have sizes 1000 , 5000 , and 10000 respectively. This is to gauge how it compares to the single running process.
 

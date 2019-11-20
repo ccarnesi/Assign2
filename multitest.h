@@ -17,7 +17,7 @@ typedef struct threadStruct{
 
 //thread function headers
 int performSearch(int * array, int size, int key, int blockSize);
-#define doStuff(X, Y, Z, Q) performSearch(X, Y, Z, Q)
+#define Search(X, Y, Z, Q) performSearch(X, Y, Z, Q)
 int* giveMeARandomArray(int size);
 void printArray(int* array, int size);
 int* swapFoundWithRandom(int* array, int index, int size);

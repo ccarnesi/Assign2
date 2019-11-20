@@ -5,40 +5,6 @@ int main(int argc, char* argv[]){
         testMeep();
 }
 
-void testA(){
-    long timeArray[100];
-    struct timeval start, end;
-    int* array = giveMeARandomArray(100000);
-    printf("Running Test A which searches a 100,000 element array for the number 15,200\n");    
-    int i = 0;
-    for(i=0;i<100;i++){
-            gettimeofday(&start, NULL);
-            int found = performSearch(array, 100000, 15200, 250);
-            gettimeofday(&end, NULL);
-            long seconds = end.tv_sec - start.tv_sec;
-            timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-            printf("Ran iteration %d\n", (i+1));
-            array = swapFoundWithRandom(array, found, 100000);
-    }
-    getMetrics(timeArray, 100, "Test A");
-}
-void testB(){
-    long timeArray[100];
-    struct timeval start, end;
-    int* array = giveMeARandomArray(50000);
-    printf("Running Test B which searches a 50,000 element array for the number 15,200\n");    
-    int i = 0;
-    for(i=0;i<100;i++){
-            gettimeofday(&start, NULL);
-            int found = performSearch(array, 50000, 15200, 250);
-            gettimeofday(&end, NULL);
-            long seconds = end.tv_sec - start.tv_sec;
-            timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-            printf("Ran iteration %d\n", (i+1));
-            array = swapFoundWithRandom(array, found, 50000);
-    }
-    getMetrics(timeArray, 100, "Test B");
-}
 void testC(){
     long timeArray[100];
     struct timeval start, end;
@@ -47,7 +13,7 @@ void testC(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = performSearch(array, 10000, 200, 250);
+            int found = Search(array, 10000, 200, 250);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
@@ -67,7 +33,7 @@ void testD(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = performSearch(array, 1000, 200, 250);
+            int found = Search(array, 1000, 200, 250);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
@@ -87,7 +53,7 @@ void testE(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = performSearch(array, 5000, 200, 250);
+            int found = Search(array, 5000, 200, 250);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
@@ -106,7 +72,7 @@ void testF(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = performSearch(array, 5000, 200, 150);
+            int found = Search(array, 5000, 200, 150);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
@@ -125,7 +91,7 @@ void testG(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = performSearch(array, 5000, 200, 50);
+            int found = Search(array, 5000, 200, 50);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
@@ -146,7 +112,7 @@ void testH(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = performSearch(array, 5000, 200, 10);
+            int found = Search(array, 5000, 200, 10);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
@@ -167,7 +133,7 @@ void testI(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = performSearch(array, 5000, 200, 5);
+            int found = Search(array, 5000, 200, 5);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
@@ -187,7 +153,7 @@ void testJ(){
     int i = 0;
     for(i=0;i<100;i++){
             gettimeofday(&start, NULL);
-            int found = doStuff(array, 250, 200, 250);
+            int found = Search(array, 250, 200, 250);
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
@@ -210,7 +176,7 @@ void testMeep(){
         array = giveMeARandomArray(arraySizes[i]);
 		for(j=0;j<100;j++){
 			gettimeofday(&start,NULL);
-			int found = performSearch(array,arraySizes[i],200,250);
+			int found = Search(array,arraySizes[i],200,250);
 			gettimeofday(&end, NULL);
 			long seconds = end.tv_sec - start.tv_sec;
 			timeArray[j] = ((seconds*1000000) + end.tv_usec)-(start.tv_usec);
