@@ -7,48 +7,53 @@ int performSearch(int * array , int size, int key, int blocksize){
 	if(remainder> 0){
 		blocks++;
 	}
-	int i,init,start= 0;
+	int i,init,start,child= 0;
 	int fin = blocksize;
 	int stat;
+	int children[blocks];
+	int found = -1;
 	for(i=0;i <blocks;i++){
 		/*this is the loop that will create the necessary amount of children, just have to figure out a way to be able to iterate through the array in the correct positions*/
-		if(fork()==0){
-			int counter = start;
-			int count = 0;
-			/*this portion searches for the key*/
-			for(counter; counter<fin;counter++){
-				if(array[counter]==key){
-					exit(count);
-
-				}
-				++count;
-			}
-			/*reached end of assigned area of array*/
-			exit(255);
+		int id = fork();
+		if(id==0){
+			child =1;
+			break;
 		}
 		else{
-			/*here the parent is waiting for the child and recieved the number in which they found the key*/
+			/*here we know that we are the parent so we gotta increase our increments for blocks while also adding the return value of fork into our array of child id's*/
 			start += blocksize;
 			fin += blocksize;
 			if(i==blocks-1){
 				fin = size;
 			}
-			wait(&stat);
+			children[i] = id;
 
 		}
-		/* here 255 means child found no key in their array search*/
-		if(WIFEXITED(stat)){
-			if(WEXITSTATUS(stat)==255){
-				/*not found in that child process continue*/
-				continue;
+	}
+	if(child ==1){
+		int counter = start;
+		int count =0;
+		for(counter; counter<fin;counter++){
+			if(array[counter]==key){
+				exit(count);
 			}
-			else{
-				/*found somewhere*/
-				return (i*blocksize)+WEXITSTATUS(stat);
-
+			++count;
+		}
+		exit(255);
+	}
+	else{
+		/*here parent waits on all children*/
+		for(i=0;i<blocks;i++){
+			waitpid(children[i],&stat,WNOHANG);
+			if(WIFEXITED(stat)){
+				if(WEXITSTATUS(stat)!=255){
+					found = (i*blocksize)+WEXITSTATUS(stat);
+				}
+					
 			}
 		}
+		return found;
 
 	}
-	return -1;
+		
 }	
