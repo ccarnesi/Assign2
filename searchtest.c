@@ -2,7 +2,7 @@
 #include <sys/time.h>
 
 int main(int argc, char* argv[]){
-        testMeep();
+	testFirstMeep();
 }
 
 void testC(){
@@ -17,13 +17,13 @@ void testC(){
             gettimeofday(&end, NULL);
             long seconds = end.tv_sec - start.tv_sec;
             timeArray[i] = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
-      //      printf("Ran iteration %d\n", (i+1));
+      	    printf("Ran iteration %d\n", (i+1));
             array = swapFoundWithRandom(array, found, 10000);
     }
     float avg = getAvgLong(timeArray, 100);
     printf("%d,%f;",10000, avg);
 
-    //getMetrics(timeArray, 100, "Test C");
+    getMetrics(timeArray, 100, "Test C");
 }
 void testD(){
     long timeArray[100];
@@ -166,11 +166,11 @@ void testJ(){
     //getMetrics(timeArray, 100, "Test J");
 }
 
-void testMeep(){
+void testFirstMeep(){
 	long timeArray[100];
 	struct timeval start, end;
-    int arraySizes[] = {1000, 5000, 10000, 15000, 20000};
-    int* array; 
+	int arraySizes[] = {1000, 5000, 10000, 15000, 20000};
+	int* array; 
 	int i,j = 0;
 	for(i=0;i<5;i++){
         array = giveMeARandomArray(arraySizes[i]);
@@ -180,10 +180,18 @@ void testMeep(){
 			gettimeofday(&end, NULL);
 			long seconds = end.tv_sec - start.tv_sec;
 			timeArray[j] = ((seconds*1000000) + end.tv_usec)-(start.tv_usec);
+			array = swapFoundWithRandom(array,found,arraySizes[i]);
 		}
         float average = getAvgLong(timeArray,100);
-		printf("%d,%f;",arraySizes[i],average);
+	printf("%d,%f;\n",arraySizes[i],average);
 	}
+}
+void testMeepTwo(){
+	return;
+}
+void testMeepThree(){
+
+	return;
 }
 
 int* swapFoundWithRandom(int* array, int index, int size){
