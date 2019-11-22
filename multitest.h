@@ -35,6 +35,7 @@ void testG();
 void testH();
 void testI();
 void testJ();
-void testMeep();
+void testFirstMeep();
+void testTwoMeep();
 
 #endif

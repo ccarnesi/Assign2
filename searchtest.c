@@ -186,11 +186,21 @@ void testFirstMeep(){
 	printf("%d,%f\n",arraySizes[i],average);
 	}
 }
-void testMeepTwo(){
-	return;
-}
-void testMeepThree(){
-
+void testTwoMeep(){
+	long timeArray[100];
+	struct timeval start, end;
+	int * array =giveMeARandomArray(250);
+	int i =0;
+	for(i=0;i<100;i++){
+		gettimeofday(&start,NULL);
+		int found = Search(array,250,200,250);
+		gettimeofday(&end,NULL);
+		long seconds = end.tv_sec-start.tv_sec;
+		timeArray[i] = ((seconds*1000000)+end.tv_usec)-(start.tv_usec);
+		array = swapFoundWithRandom(array,found,250);
+	}
+	float average = getAvgLong(timeArray,100);
+	printf("%d,%f\n",250,average);
 	return;
 }
 
