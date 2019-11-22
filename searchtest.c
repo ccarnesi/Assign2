@@ -2,7 +2,29 @@
 #include <sys/time.h>
 
 int main(int argc, char* argv[]){
-	testFirstMeep();
+	testJ();
+	testD();
+	testE();
+	testC();
+	testB();
+}
+void testB(){
+	long timeArray[100];
+	struct timeval start, end;
+	int * array = giveMeARandomArray(15000);
+	printf("Running Test D which search a 15,000 element array for the number 200\n");
+	int i =0;
+	for(i=0;i<100;i++){
+		gettimeofday(&start,NULL);
+		int found = Search(array,15000,200,250);
+		gettimeofday(&end,NULL);
+		long seconds = end.tv_sec-start.tv_sec;
+		timeArray[i] = ((seconds * 1000000) + end.tv_usec) -(start.tv_usec);
+		array = swapFoundWithRandom(array,found,15000);
+	}
+	float avg = getAvgLong(timeArray,100);
+	printf("%d,%f\n",15000,avg);
+	// getMetrics(timeArray,100, "Test B");
 }
 
 void testC(){
